@@ -17,25 +17,58 @@
                 <div class="menu-inner-shadow"></div>
 
 
+<ul class="menu-inner py-1">
+    <!-- Dashboards -->
+    <li class="menu-item active">
+        <a href="{{ route('dashboard.index') }}" class="menu-link">
+            <i class="menu-icon icon-base ti tabler-dashboard"></i>
+            <div data-i18n="Dashboards">Dashboards</div>
+        </a>
+    </li>
 
-                <ul class="menu-inner py-1">
-                    <!-- Dashboards -->
-                    <li class="menu-item active">
-                        <a href="{{ route('dashboard.index') }}" class="menu-link">
-                            <i class="menu-icon icon-base ti tabler-home"></i>
-                            <div data-i18n="Dashboards">Dashboards</div>
-                        </a>
+    <li class="menu-item">
+        <a href="form-validation.html" class="menu-link">
+            <i class="menu-icon icon-base ti tabler-notes"></i>
+            <div data-i18n="Postingan">Postingan</div>
+        </a>
+    </li>
 
-             
-                    <li class="menu-item">
-                        <a href="form-validation.html" class="menu-link">
-                            <i class="menu-icon icon-base ti tabler-checkbox"></i>
-                            <div data-i18n="Form Validation">API</div>
-                        </a>
-                    </li>
-                    <!-- Tables -->
-                
-                </ul>
+    <li class="menu-item">
+        <a href="form-validation.html" class="menu-link">
+            <i class="menu-icon icon-base ti tabler-message-circle"></i>
+            <div data-i18n="Komentar">Komentar</div>
+        </a>
+    </li>
+
+    <li class="menu-item">
+        <a href="form-validation.html" class="menu-link">
+            <i class="menu-icon icon-base ti tabler-chart-bar"></i>
+            <div data-i18n="Statistik">Statistik</div>
+        </a>
+    </li>
+
+    <li class="menu-item">
+        <a href="form-validation.html" class="menu-link">
+            <i class="menu-icon icon-base ti tabler-folder-code"></i>
+            <div data-i18n="Project Saya">Project Saya</div>
+        </a>
+    </li>
+
+    <li class="menu-item">
+        <a href="form-validation.html" class="menu-link">
+            <i class="menu-icon icon-base ti tabler-settings"></i>
+            <div data-i18n="Setelan">Setelan</div>
+        </a>
+    </li>
+
+    <li class="menu-item">
+        <a href="form-validation.html" class="menu-link">
+            <i class="menu-icon icon-base ti tabler-api"></i>
+            <div data-i18n="API">API</div>
+        </a>
+    </li>
+</ul>
+
             </aside>
               <div class="menu-mobile-toggler d-xl-none rounded-1">
                 <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large text-bg-secondary p-2 rounded-1">

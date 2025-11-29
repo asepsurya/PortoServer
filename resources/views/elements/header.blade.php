@@ -4,8 +4,8 @@
                 <div class="col-lg-3 col-6 order1">
                     <div class="bord">
                         <!-- Logo -->
-                        <a class="logo " href="/">
-                            <img src="{{ asset('img/logo.png') }}" alt="logo" width="200">
+                        <a class="logo" href="/">
+                            <img src="{{ asset('img/logo.png') }}" alt="logo" width="20">
                         </a>
                     </div>
                 </div>

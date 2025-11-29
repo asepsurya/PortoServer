@@ -67,12 +67,12 @@
                             <div class="bottom-boxs">
                                 <div class="item5 box-shadwo d-flex align-items-center justify-content-center">
                                     <a href="#0" class="icon">
-                                        <i class="fab fa-linkedin-in"></i>
+                                        <i class="fab fa-instagram"></i>
                                     </a>
                                 </div>
                                 <div class="item6 box-shadwo d-flex align-items-center justify-content-center">
                                     <a href="#0" class="icon">
-                                        <i class="fab fa-behance"></i>
+                                        <i class="fab fa-twitter"></i>
                                     </a>
                                 </div>
                                 <div class="item7 box-shadwo d-flex align-items-center justify-content-center">
@@ -95,10 +95,10 @@
                                 </div>
                                 <div class="social mt-20">
                                     <a href="#0" class="icon">
-                                        <i class="fab fa-linkedin-in"></i>
+                                        <i class="fab fa-twitter"></i>
                                     </a>
                                     <a href="#0" class="icon">
-                                        <i class="fab fa-behance"></i>
+                                        <i class="fab fa-instagram"></i>
                                     </a>
                                     <a href="#0" class="icon">
                                         <i class="fab fa-dribbble"></i>
@@ -150,7 +150,7 @@
                                     <div class="ml-auto">
                                         <div class="butn-presv">
                                             <a href="contact.html" class="butn butn-md butn-bord radius-5 skew">
-                                                <span>Hire Me!</span>
+                                                <span>Download CV</span>
                                             </a>
                                         </div>
                                     </div>

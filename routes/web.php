@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\TokenUser;
 use App\Http\Controllers\AuthApiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Posts\PostsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,3 +27,5 @@ Route::get('/detail', [AuthApiController::class, 'detail'])->name('detail');
 Route::get('/login', [AuthApiController::class, 'showLoginForm'])->name('login');
 Route::get('/mocup', [AuthApiController::class, 'mocup'])->name('mocup');
 Route::post('/login', [AuthApiController::class, 'login'])->name('login.process');
+// ----------------------- POST --------------------------------------------------------
+Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');

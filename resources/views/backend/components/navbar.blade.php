@@ -10,19 +10,19 @@
                     <div class="navbar-nav-right d-flex align-items-center justify-content-end" id="navbar-collapse">
 
                         <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item navbar-search-wrapper px-md-0 px-2 mb-0">
-                                <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
-                                    <span class="d-inline-block text-body-secondary fw-normal" id="autocomplete"></span>
-                                </a>
+                      <div class="flex-grow-1 d-flex align-items-center px-3  w-100">
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-end-0">
+                                    <i class="icon-base ti tabler-search"></i>
+                                </span>
+                                <input type="text" 
+                                    class="form-control border-start-0" 
+                                    placeholder="Search anything..."
+                                    id="navbar-search-input">
                             </div>
                         </div>
 
                         <!-- /Search -->
-
-
-
-
 
                         <ul class="navbar-nav flex-row align-items-center ms-md-auto">
 
