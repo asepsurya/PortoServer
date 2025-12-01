@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Dashboard')
 @section('container')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row g-6">
@@ -6,7 +7,6 @@
     <div class="col-xl-6 col">
       <div class="swiper-container swiper-container-horizontal swiper swiper-card-advance-bg swiper-initialized swiper-horizontal swiper-backface-hidden" id="swiper-with-pagination-cards">
         <div class="swiper-wrapper" id="swiper-wrapper-0b6bd4cbbe041165" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-2140px, 0px, 0px); transition-delay: 0ms;">
-          
           
           
         <div class="swiper-slide swiper-slide-next" role="group" aria-label="1 / 3" data-swiper-slide-index="0" style="width: 1070px;">
@@ -1027,4 +1027,10 @@
     <!--/ Projects table -->
   </div>
 </div>
+@section('js')
+    <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+       <!-- Vendors JS -->
+    <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/swiper/swiper.js') }}"></script>
+@endsection
 @endsection

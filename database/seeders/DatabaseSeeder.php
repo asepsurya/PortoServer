@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
             // Attach 2-4 skill random
             $project->skills()->attach($skills->random(rand(2,4))->pluck('id'));
         });
+        
     }
 }

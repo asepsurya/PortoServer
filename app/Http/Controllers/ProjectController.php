@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
+use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProjectController extends Controller
 {
@@ -69,33 +73,6 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-         $data = $request->validate([
-            'title'=>'required|string',
-            'description'=>'nullable|string',
-            'image'=>'nullable|url',
-            'link'=>'nullable|url',
-            'category_id'=>'nullable|exists:categories,id',
-            'skills'=>'nullable|array'
-        ]);
-
-        $project->update($data);
-
-        if(isset($data['skills'])){
-            $project->skills()->sync($data['skills']);
-        }
-
-        return redirect()->route('projects.index')->with('success','Project updated!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $project->skills()->detach();
-        $project->delete();
-        return redirect()->route('projects.index')->with('success','Project deleted!');
-    }
+  
+ 
 }

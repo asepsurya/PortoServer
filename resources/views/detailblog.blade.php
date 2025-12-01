@@ -1,121 +1,108 @@
 @extends('layouts.front')
 @section('container')
+<style>
+.text {
+    line-height: 1.8; /* desktop line height */
+    font-size: 16px;
+   
+}
+.text table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    color: #fff; /* teks putih */
+    background-color: #2b2b2b; /* latar gelap */
+}
+.text th,
+.text td {
+    border: 1px solid #444; /* garis border lebih soft */
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.text th {
+    background-color: #3c3c3c; /* header lebih gelap */
+    font-weight: 600;
+}
+
+.text tr:nth-child(even) {
+    background-color: #343434; /* baris genap sedikit lebih terang */
+}
+
+/* Hover efek */
+.text tr:hover {
+    background-color: #3a3a3a;
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 768px) {
+    .text th,
+    .text td {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+}
+.text p {
+    margin-bottom: 1em;
+}
+
+.text ul, 
+.text ol {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.text ul li {
+    list-style-type: disc;
+    margin-bottom: 0.5em;
+}
+
+.text ol li {
+    list-style-type: decimal;
+    margin-bottom: 0.5em;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .text {
+        line-height: 1.6; /* lebih rapat untuk layar kecil */
+        font-size: 15px;
+    }
+
+    .text ul, 
+    .text ol {
+        padding-left: 1.2em; /* kurang indentasi untuk mobile */
+    }
+}
+
+</style>
    <section class="main-post section-padding">
             <div class="container with-pad">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="caption text-center">
                             <div class="gat">
-                                <a href="#0"><span>Web Design</span></a>
-                                <a href="#0"><span>Envato</span></a>
+                                 @foreach($project->category() as $category)
+                                    <a href="{{ url('/project?category=' . $category->id) }}">
+                                        <span >{{ $category->name }}   </span></a>
+                                @endforeach
                             </div>
-                            <h1 class="fz-55 mt-30">Network of wormholes colonies extraordinary claims require.</h1>
+                            <h1 class="fz-55 mt-30">{{ $project->title }}</h1>
                             <p class="sub-title mt-15">6 , August 2022 - By Admin</p>
                         </div>
-                        <div class="main-img mb-80 mt-40">
-                            <img src="assets/imgs/blog/m.jpg" alt="" class="radius-5">
+                        <div class="main-img mb-40 mt-40">
+                            <img src="{{ $project->image ? asset('storage/' . $project->image) : asset('img/no-signal.avif') }}" alt="" class="radius-5">
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
                         <div class="cont">
-                            <div class="text mb-20">
-                                <div class="d-flex align-items-center mb-20">
-                                    <span class="fz-60 fw-500 main-color line-height-1 mr-10">A</span>
-                                    <p>new report said earlier this week that Apple is working on a brand new
-                                        laptop. A trusted Apple insider with a proven track record confirmed
-                                        that Apple is working on the larger MacBook Air.</p>
-                                </div>
-                                <p>new report said earlier this week that Apple is working on a brand
-                                    new laptop.
-                                    Apple plans to release a 15-inch MacBook Air in 2024, a first for
-                                    the Air
-                                    series. A trusted Apple insider with a proven track record confirmed
-                                    that Apple
-                                    is working on the larger MacBook Air.</p>
-                            </div>
+                          
                             <div class="text">
-                                <p>However, Apple might not include it in the Air series when it
-                                    launches it. As for
-                                    the notebook’s release date, the 15-inch MacBook isn’t coming soon.
-                                    It’ll get a
-                                    late 2024 release at best, according to the new claims.</p>
+                                {!! $project->description !!}
                             </div>
-                            <div class="title mt-30">
-                                <h5 class="fw-500">What sizes do MacBook Airs come in?</h5>
-                            </div>
-                            <div class="text mt-20">
-                                <p>Apple currently sells only one MacBook Air size. The laptop comes in
-                                    a 13-inch
-                                    version that matches the pre-2021 13-inch MacBook Pro size.
-                                    Previously, Apple
-                                    sold an 11-inch MacBook Air, but the company discontinued that model
-                                    in 2017.
-                                </p>
-                            </div>
-                            <div class="post-qoute mt-50">
-                                <h6 class="line-height-28 fz-20">
-                                    <span class="l-block">Increase your site traffic and gain new customers
-                                        with a beautiful
-                                        and
-                                        functional blog.</span>
-                                    <span class="sub-title main-color mt-20 mb-0"> - Ui-ThemeZ
-                                        Code</span>
-                                </h6>
-                            </div>
-                            <div class="mb-50 mt-50">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="iner-img sm-mb30">
-                                            <img src="assets/imgs/blog/b1.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="iner-img">
-                                            <img src="assets/imgs/blog/b2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="title mb-10">
-                                <h5 class="fw-500">Apple currently sells only one MacBook Air size.</h5>
-                            </div>
-                            <div class="text mb-20">
-                                <p>A new report said earlier this week that Apple is working on a brand new
-                                    laptop.
-                                    Apple plans to release a 15-inch MacBook Air in 2024, a first for the
-                                    Air
-                                    series. A trusted Apple insider with a proven track record confirmed
-                                    that Apple
-                                    is working on the larger MacBook Air.</p>
-                            </div>
-                            <div class="unorder-list mb-30">
-                                <h6 class="mb-10">Ordered & Unordered Lists.</h6>
-                                <ul class="rest">
-                                    <li>Yet this above sewed flirted opened ouch</li>
-                                    <li>Goldfinch realistic sporadic ingenuous</li>
-                                    <li>Abominable this abidin far successfully then like piquan</li>
-                                </ul>
-                            </div>
-                            <div class="order-list mb-30">
-                                <h6 class="mb-10">Ordered & Unordered Lists.</h6>
-                                <ul class="rest">
-                                    <li><span>01 -</span> Yet this above sewed flirted opened ouch</li>
-                                    <li><span>02 -</span> Goldfinch realistic sporadic ingenuous</li>
-                                    <li><span>03 -</span> Abominable this abidin far successfully then like
-                                        piquan
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="text">
-                                <p>However, Apple might not include it in the Air series when it launches
-                                    it. As for
-                                    the notebook’s release date, the 15-inch MacBook isn’t coming soon.
-                                    It’ll get a
-                                    late 2024 release at best, according to the new claims.</p>
-                            </div>
-
+                           
                             <div class="info-area flex mt-20 pb-20 pt-20 bord-thin-top bord-thin-bottom">
                                 <div>
                                     <div class="tags flex">

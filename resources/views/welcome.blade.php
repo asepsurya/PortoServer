@@ -53,14 +53,14 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <h6 class="ml-15"><a href="services.html">Our Services</a></h6>
+                                        <h6 class="ml-15"><a href="{{ route('login') }}">Sistem Saya</a></h6>
                                     </div>
                                 </div>
 
                                 <div class="box2">
                                     <div class="item3 box-shadwo"></div>
                                     <div class="item4 box-shadwo d-flex align-items-center">
-                                        <h6><a href="portfolio.html">Our Portfolio</a></h6>
+                                        <h6><a href="{{ route('porto') }}">Portfolio</a></h6>
                                     </div>
                                 </div>
                             </div>
@@ -76,8 +76,8 @@
                                     </a>
                                 </div>
                                 <div class="item7 box-shadwo d-flex align-items-center justify-content-center">
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-dribbble"></i>
+                                    <a href="https://github.com/asepsurya" class="icon">
+                                        <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>
@@ -100,8 +100,8 @@
                                     <a href="#0" class="icon">
                                         <i class="fab fa-instagram"></i>
                                     </a>
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-dribbble"></i>
+                                    <a href="https://github.com/asepsurya" class="icon">
+                                        <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>

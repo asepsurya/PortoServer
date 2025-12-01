@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="eng">
-
-
-<!-- Mirrored from uithemez.com/i/andrew/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 18 Apr 2024 06:53:00 GMT -->
 <head>
 
     <!-- Metas -->
@@ -32,16 +29,31 @@
         rel="stylesheet">
 
     <!-- Plugins -->
-    <link rel="stylesheet" href="assets/css/plugins.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
 
     <!-- Core Style Css -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+       <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+      
+        <style>
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* supaya di belakang semua */
+    }
 
+   
+</style>
+
+       
 </head>
 
 <body>
 
-
+       <div id="particles-js"></div>
 
     <!-- ==================== Start Loading ==================== -->
 
@@ -92,6 +104,7 @@
 
 
     <main class="pt-80">
+   
         <!-- ==================== Start Hero ==================== -->
        @yield('container')
         <!-- ==================== End Hero ==================== -->
@@ -120,17 +133,40 @@
 
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-3.4.0.min.js"></script>
+    <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-migrate-3.4.0.min.js') }}"></script>
 
     <!-- plugins -->
-    <script src="assets/js/plugins.js"></script>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
 
     <!-- custom scripts -->
-    <script src="assets/js/scripts.js"></script>
-
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    @yield('js')
 </body>
+  <!-- PARTICLE CONFIG -->
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 85, "density": { "enable": true, "value_area": 800 }},
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.15, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 130,
+                    "color": "#ffffff",
+                    "opacity": 0.12,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 1.2, "direction": "none", "out_mode": "bounce" }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "grab" } }
+            },
+            "retina_detect": true
+        });
+    </script>
 
 
-<!-- Mirrored from uithemez.com/i/andrew/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 18 Apr 2024 06:53:04 GMT -->
 </html>

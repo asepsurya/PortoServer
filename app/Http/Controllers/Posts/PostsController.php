@@ -10,4 +10,7 @@ class PostsController extends Controller
     public function index(){
         return view('backend.postingan.index');
     }
+    public function add(){
+         return view('backend.postingan.add');
+    }
 }

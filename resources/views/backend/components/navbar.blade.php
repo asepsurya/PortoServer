@@ -11,6 +11,7 @@
 
                         <!-- Search -->
                       <div class="flex-grow-1 d-flex align-items-center px-3  w-100">
+                        @if(Request::is('posts'))
                             <div class="input-group">
                                 <span class="input-group-text bg-transparent border-end-0">
                                     <i class="icon-base ti tabler-search"></i>
@@ -21,7 +22,9 @@
                                     id="navbar-search-input">
                             </div>
                         </div>
-
+                        @else
+                        <h4 class="pt-3">@yield('title')</h4>
+                        @endif
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-md-auto">

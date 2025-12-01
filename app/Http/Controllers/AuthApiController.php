@@ -47,15 +47,11 @@ class AuthApiController extends Controller
     public function about(){
         return view('profile');
     }
-    public function porto(){
-        return view('portofolio');
-    }
+ 
     public function blog(){
         return view('blog');
     }
-    public function detail(){
-        return view('detailblog');
-    }
+  
     public function contact(){
         return view('contact');
     }

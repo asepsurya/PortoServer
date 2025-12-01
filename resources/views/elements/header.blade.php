@@ -2,12 +2,13 @@
         <div class="container position-re">
             <div class="row">
                 <div class="col-lg-3 col-6 order1">
-                    <div class="bord">
+                  <div class="bord d-flex justify-content-center">
                         <!-- Logo -->
                         <a class="logo" href="/">
-                            <img src="{{ asset('img/logo.png') }}" alt="logo" width="20">
+                            <img src="{{ asset('img/logo.png') }}" alt="logo" style="height:50px; width:auto;">
                         </a>
                     </div>
+
                 </div>
                 <div class="col-lg-6 order3">
                     <div class="bg">
