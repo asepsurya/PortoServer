@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Edit Projek')
+@section('head')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+@endsection
 @section('container')
     <style>
         .tox-tinymce,
@@ -19,7 +23,10 @@
         #imageGalleryModal.modal.show {
             z-index: 2000 !important; /* modal di atas semua elemen */
         }
-
+        #cropModal.modal.show {
+            z-index: 2000 !important;
+            /* modal di atas semua elemen */
+        }
     </style>
 
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -55,13 +62,40 @@
                     <!-- ACTION BUTTONS -->
                     <div class="card border-0 shadow-sm mb-3">
                         <div class="card-body d-flex justify-content-between align-items-center">
-                            <button type="button" class="btn btn-outline-secondary d-flex align-items-center gap-2 px-3">
-                                <i class="icon-base ti tabler-eye icon-22px"></i> Pratinjau
-                            </button>
+                            <a href="/project" type="button" class="btn btn-outline-secondary d-flex align-items-center gap-2 px-3">
+                                <i class="icon-base ti tabler-arrow-left icon-22px"></i> Kembali
+                            </a>
 
-                            <button type="submit" class="btn btn-primary d-flex align-items-center gap-2 px-4 fw-semibold">
-                                <i class="icon-base ti tabler-device-floppy icon-22px "></i> Update
-                            </button>
+                            <div class="btn-group">
+
+                                <!-- Tombol Utama -->
+                                <button type="submit" class="btn btn-primary d-flex align-items-center gap-2 px-4 fw-semibold">
+                                    <i class="icon-base ti tabler-send icon-22px"></i> Update
+                                </button>
+
+                                <!-- Toggle Dropdown -->
+                                <button type="button" 
+                                        class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+
+                                <!-- Menu -->
+                                <ul class="dropdown-menu shadow-sm">
+                                    <li>
+                                        <button class="dropdown-item d-flex align-items-center gap-2" 
+                                                type="submit" name="status" value="0">
+                                            <i class="icon-base ti tabler-pencil icon-22px"></i> Simpan sebagai Draft
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button class="dropdown-item d-flex align-items-center gap-2" 
+                                                type="submit" name="status" value="1">
+                                            <i class="icon-base ti tabler-send icon-22px"></i> Publikasikan
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -120,7 +154,10 @@
                             @endif
 
                             <h6 class="fw-semibold mt-3 mb-2">Ganti Gambar</h6>
-                            <input type="file" name="image" class="form-control">
+                            <input type="file" id="imageInput" class="form-control" accept="image/*">
+
+                            <!-- Hasil Crop -->
+                            <input type="" name="image_cropped" id="imageCropped">
                         </div>
                     </div>
 
@@ -138,7 +175,42 @@
 
         </form>
     </div>
+<!-- Modal Cropper -->
+<div class="modal fade" id="cropModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
 
+            <div class="modal-header">
+                <h5 class="modal-title">Crop Thumbnail</h5>
+            </div>
+
+            <!-- Loader Overlay -->
+            <div id="cropLoader" style="position:absolute; top:0; left:0; width:100%; height:100%; 
+                 background:rgba(255,255,255,0.8); display:flex; align-items:center; 
+                 justify-content:center; z-index:10; font-size:22px; display:none;">
+                <div class="spinner-border" role="status"></div>
+            </div>
+
+            <div class="modal-body d-flex justify-content-center">
+
+                <div id="cropContainer" style="width:100%; max-width:500px; height:450px; 
+                                position:relative; background:#f1f1f1; 
+                                display:flex; align-items:center; justify-content:center; 
+                                overflow:hidden; border-radius:8px;">
+
+                    <img id="previewImage" style="max-width:100%; max-height:100%; object-fit:contain; display:none;">
+                </div>
+            </div>
+
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" id="cropBtn" class="btn btn-primary">
+                    Crop & Save
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
     <div class="modal fade" id="imageGalleryModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -454,6 +526,59 @@
         });
     });
 });
+
+</script>
+<script>
+    let cropper;
+
+    document.getElementById('imageInput').addEventListener('change', function(e) {
+        let file = e.target.files[0];
+        let reader = new FileReader();
+
+        reader.onload = function(event) {
+            let img = document.getElementById('previewImage');
+            img.src = event.target.result;
+
+            // Tampilkan loader
+            document.getElementById('cropLoader').style.display = 'flex';
+            img.style.display = 'none';
+
+            // Buka modal
+            let modal = new bootstrap.Modal(document.getElementById('cropModal'));
+            modal.show();
+
+            // Matikan cropper lama dulu
+            if (cropper) cropper.destroy();
+
+            // Tunggu modal muncul agar cropper bisa membaca ukuran
+            setTimeout(() => {
+                cropper = new Cropper(img, {
+                    aspectRatio: 600 / 400
+                    , viewMode: 1
+                    , responsive: true
+                    , ready() {
+                        // Hilangkan loader setelah cropper siap
+                        document.getElementById('cropLoader').style.display = 'none';
+                        img.style.display = 'block';
+                    }
+                });
+            }, 300);
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+
+    document.getElementById('cropBtn').addEventListener('click', function() {
+        let canvas = cropper.getCroppedCanvas({
+            width: 600
+            , height: 400
+        , });
+
+        document.getElementById('imageCropped').value = canvas.toDataURL("image/jpeg", 0.9);
+
+        bootstrap.Modal.getInstance(document.getElementById('cropModal')).hide();
+    });
 
 </script>
 @endsection

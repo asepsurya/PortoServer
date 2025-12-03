@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Media;
 use App\Models\Images;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 class MediaController extends Controller
 {
@@ -32,7 +33,7 @@ class MediaController extends Controller
 }
 public function drop(request $request){
  $request->validate([
-        'images.*' => 'required|image|max:2048',
+        'images.*' => 'required|image',
     ]);
 
     $uploaded = [];

@@ -25,7 +25,15 @@ class PortofolioController extends Controller
 
     }
       public function detail($slug){
-        $project = Project::where('slug',$slug)->first();
+       $project = Project::where('slug', $slug)->firstOrFail();
+
+        $projectKey = 'project_viewed_' . $project->id;
+
+        if (!session()->has($projectKey)) {
+            $project->increment('views');
+            session()->put($projectKey, true);
+            session()->save();
+        }
         return view('detailblog',compact('project'));
     }
   

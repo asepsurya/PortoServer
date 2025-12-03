@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\Posts\PostsController;
+use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\Project\ProjectController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Statistik\StatistikController;
@@ -31,6 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
     Route::get('/project/{slug}', [ProjectController::class, 'edit'])->name('project.edit');
     Route::post('/project/update/{slug}', [ProjectController::class, 'update'])->name('project.update');
+    Route::delete('/project/{slug}/delete', [ProjectController::class, 'destroy']);
+    Route::post('/project/delete-multiple', [ProjectController::class, 'deleteMultiple']);
+    Route::get('/project/{project}/publish', [ProjectController::class, 'publish']);
+    Route::get('/project/{project}/draft', [ProjectController::class, 'draft']);
+
     // -------------------------Statistisk--------------------------------------------
     Route::get('/statistik', [StatistikController::class, 'index'])->name('statistik.index');
     // -------------------------- media ---------------------------------------------
@@ -53,3 +59,4 @@ Route::get('/portofolio/detail/{slug}', [PortofolioController::class, 'detail'])
 Route::get('/login', [AuthApiController::class, 'showLoginForm'])->middleware('guest')->name('login');
 Route::get('/mocup', [AuthApiController::class, 'mocup'])->name('mocup');
 Route::post('/login', [AuthApiController::class, 'login'])->middleware('guest')->name('login.process');
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');

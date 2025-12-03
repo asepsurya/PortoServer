@@ -110,8 +110,10 @@
                                             <span>Tags :</span>
                                         </div>
                                         <div>
-                                            <a href="#">Tech</a>
-                                            <a href="#">Gavi</a>
+                                           @foreach($project->category() as $category)
+                                                <a href="{{ url('/project?category=' . $category->id) }}">
+                                                    <span >{{ $category->name }}   </span></a>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -133,12 +135,12 @@
                                 <div class="flex">
                                     <div class="author-img mr-30">
                                         <div class="img">
-                                            <img src="assets/imgs/blog/author1.jpg" alt="" class="circle-img">
+                                            <img src="{{ asset('img/user.jpg') }}" alt="" class="circle-img">
                                         </div>
                                     </div>
                                     <div class="cont valign">
                                         <div class="full-width">
-                                            <h6 class="fw-500 mb-10">Chris Smith</h6>
+                                            <h6 class="fw-500 mb-10">{{ $project->user->name }}</h6>
                                             <p>Nulla eleifend, lectus eu gravida facilisis, ipsum metus faucibus
                                                 eros,
                                                 vitae vulputate nibh libero ac metus.</p>

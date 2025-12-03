@@ -16,6 +16,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::with(['category','skills'])->paginate(10);
+    
         return view('projects.index', compact('projects'));
     }
 
@@ -40,9 +41,10 @@ class ProjectController extends Controller
             'image'=>'nullable|url',
             'link'=>'nullable|url',
             'category_id'=>'nullable|exists:categories,id',
-            'skills'=>'nullable|array'
+            'skills'=>'nullable|array',
+            'auth'=>'nullable|exists:users,id'
         ]);
-
+        $data['auth'] = auth()->id();
         $project = Project::create($data);
 
         if(isset($data['skills'])){
@@ -67,6 +69,7 @@ class ProjectController extends Controller
     {
          $categories = Category::all();
         $skills = Skill::all();
+        
         return view('projects.edit', compact('project','categories','skills'));
     }
 

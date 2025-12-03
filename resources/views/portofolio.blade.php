@@ -52,7 +52,7 @@
 
             <div class="gallery">
                 <div class="row">
-                    @foreach ($project as $item)
+                    @foreach ($project->where('status','1') as $item)
                         <div class="col-lg-4 items">
                             <div class="item">
                                 <div class="img">
