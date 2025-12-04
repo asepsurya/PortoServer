@@ -29,13 +29,13 @@
           <li class="menu-header small">
               <span class="menu-header-text">Apps & Pages</span>
           </li>
-
-          <li class="menu-item {{ request()->routeIs('dashboard.index') ? 'active' : '' }}">
-              <a href="{{ route('dashboard.index') }}" class="menu-link">
-                  <i class="menu-icon icon-base ti tabler-dashboard"></i>
-                  <div>Dashboards</div>
+        <li class="menu-item {{ request()->is('statistik*') ? 'active' : '' }}">
+              <a href="{{ route('statistik.index') }}" class="menu-link">
+                  <i class="menu-icon icon-base ti tabler-chart-bar"></i>
+                  <div>Dashboard Statistik</div>
               </a>
           </li>
+      
            <li class="menu-item {{ request()->routeIs('media.*') ? 'active' : '' }}">
                 <a href="{{ route('media.index') }}" class="menu-link">
                     <i class="menu-icon ti tabler-photo"></i>
@@ -59,12 +59,7 @@
               </a>
           </li>
 
-          <li class="menu-item {{ request()->is('statistik*') ? 'active' : '' }}">
-              <a href="{{ route('statistik.index') }}" class="menu-link">
-                  <i class="menu-icon icon-base ti tabler-chart-bar"></i>
-                  <div>Statistik</div>
-              </a>
-          </li>
+     
 
           <li class="menu-item {{ request()->routeIs('project.*') ? 'active' : '' }}">
               <a href="{{ route('project.index') }}" class="menu-link">

@@ -10,8 +10,10 @@ use Intervention\Image\Facades\Image;
 class MediaController extends Controller
 {
     public function index(){
-        $images = Images::all();
-        return view('backend.media.index',compact('images'));
+       $images = Images::orderBy('created_at', 'desc')->paginate(20);
+
+        return view('backend.media.index', compact('images'));
+
     }
     public function store(Request $request)
 {

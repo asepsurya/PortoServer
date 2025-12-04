@@ -11,7 +11,7 @@ use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\Project\ProjectController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Statistik\StatistikController;
-
+  use Illuminate\Support\Facades\Http;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -60,3 +60,13 @@ Route::get('/login', [AuthApiController::class, 'showLoginForm'])->middleware('g
 Route::get('/mocup', [AuthApiController::class, 'mocup'])->name('mocup');
 Route::post('/login', [AuthApiController::class, 'login'])->middleware('guest')->name('login.process');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+Route::get('/test-drive-token', function () {
+    $response = Http::asForm()->post('https://oauth2.googleapis.com/token', [
+        'client_id' => env('GOOGLE_DRIVE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
+        'refresh_token' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+        'grant_type' => 'refresh_token',
+    ]);
+
+    return response()->json($response->json());
+});
