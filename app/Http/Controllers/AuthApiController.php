@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthApiController extends Controller
 {
- 
+
 
     public function showLoginForm()
     {
@@ -30,7 +30,7 @@ class AuthApiController extends Controller
         // Generate token
         $token = $user->createToken('login-token')->plainTextToken;
 
-        return redirect()->route('tokens.index')->with('token', $token);
+        return redirect()->route('statistik.index')->with('token', $token);
     }
     public function logout(Request $request)
         {
@@ -47,11 +47,11 @@ class AuthApiController extends Controller
     public function about(){
         return view('profile');
     }
- 
+
     public function blog(){
         return view('blog');
     }
-  
+
     public function contact(){
         return view('contact');
     }
