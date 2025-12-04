@@ -74,6 +74,18 @@
         padding-left: 1.2em; /* kurang indentasi untuk mobile */
     }
 }
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
 
 </style>
    <section class="main-post section-padding">

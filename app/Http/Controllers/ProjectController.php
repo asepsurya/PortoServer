@@ -15,7 +15,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with(['category','skills'])->paginate(10);
+      $projects = Project::with(['category', 'skills'])
+            ->orderBy('created_at', 'asc') // DESC = terbaru dulu
+            ->paginate(10);
+
     
         return view('projects.index', compact('projects'));
     }

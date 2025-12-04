@@ -157,7 +157,7 @@
                             <input type="file" id="imageInput" class="form-control" accept="image/*">
 
                             <!-- Hasil Crop -->
-                            <input type="" name="image_cropped" id="imageCropped">
+                            <input type="hidden" name="image_cropped" id="imageCropped">
                         </div>
                     </div>
 
