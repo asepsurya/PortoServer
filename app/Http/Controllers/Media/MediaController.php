@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Media;
 use App\Models\Images;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 class MediaController extends Controller
 {
     public function index(){
-        $images = Images::all();
-        return view('backend.media.index',compact('images'));
+       $images = Images::orderBy('created_at', 'desc')->paginate(20);
+
+        return view('backend.media.index', compact('images'));
+
     }
     public function store(Request $request)
 {
@@ -32,7 +35,7 @@ class MediaController extends Controller
 }
 public function drop(request $request){
  $request->validate([
-        'images.*' => 'required|image|max:2048',
+        'images.*' => 'required|image',
     ]);
 
     $uploaded = [];

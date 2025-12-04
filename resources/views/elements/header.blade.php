@@ -29,7 +29,7 @@
                                             class="rolling-text">Portfolio</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/blog"><span
+                                    <a class="nav-link" href="https://www.scrollwebid.com/" target="_Blank"><span
                                             class="rolling-text">Blog</span></a>
                                 </li>
                                 <li class="nav-item">

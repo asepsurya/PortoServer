@@ -41,7 +41,7 @@
                                     <div class="item-down box-shadwo d-flex align-items-center">
                                         <div>
                                             <div class="circle-item d-flex align-items-center justify-content-center">
-                                                <a href="services.html">
+                                                <a href="{{ route('login') }}">
                                                     <svg class="arrow-right" xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                         viewBox="0 0 34.2 32.3" xml:space="preserve"
@@ -137,14 +137,14 @@
                                 <div class="d-flex align-items-center">
                                     <div class="mr-40">
                                         <div class="d-flex align-items-center">
-                                            <h2>50</h2>
-                                            <p>Completed <br> Projects</p>
+                                            <h2>1000+</h2>
+                                            <p>Completed <br> Design Product</p>
                                         </div>
                                     </div>
                                     <div class="mr-40">
                                         <div class="d-flex align-items-center">
-                                            <h2>6k</h2>
-                                            <p>Clients <br> Worldwide</p>
+                                            <h2>50+</h2>
+                                            <p>Develop <br> Aplication</p>
                                         </div>
                                     </div>
                                     <div class="ml-auto">

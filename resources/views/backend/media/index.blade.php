@@ -133,7 +133,7 @@
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPhotoModal"> 
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPhotoModal">
                         <i class="fas fa-plus me-2"></i> Add Photos
                     </button>
                 </div>
@@ -164,7 +164,7 @@
                     </div>
                 @endforeach
                 <!-- Sample photo cards -->
-                @for ($i = 1; $i <= 24; $i++)
+                @for ($i = 1; $i <= 5; $i++)
                     <div class="photo-card" data-id="{{ $i }}">
                         <div class="form-check photo-checkbox">
                             <input class="form-check-input" type="checkbox" id="photo{{ $i }}">
@@ -189,22 +189,13 @@
             </div>
 
             <!-- Pagination -->
-            <nav aria-label="Page navigation" class="mt-4">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+           <div class="mt-3 d-flex justify-content-center d-flex   ">
+                {{ $images->links() }}
+            </div>
+
         </div>
     </div>
-    
+
    <!-- Add Photo Modal -->
 <div class="modal fade" id="addPhotoModal" tabindex="-1" aria-labelledby="addPhotoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered"> <!-- <- ini membuat modal center -->
@@ -242,16 +233,16 @@
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      
+
       <div class="modal-header">
         <h5 class="modal-title" id="imageModalLabel">Photo</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
+
       <div class="modal-body text-center">
-       <img id="modalImage" 
-     src="" 
-     alt="" 
+       <img id="modalImage"
+     src=""
+     alt=""
      class="img-fluid mb-2 w-100 rounded "
      style="max-height: 300px; object-fit: contain;">
 
@@ -263,12 +254,12 @@
         </div>
         {{-- <a id="modalLink" href="#" class="d-block">Link</a> --}}
       </div>
-      
+
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" id="deleteImageBtn">Hapus</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
       </div>
-      
+
     </div>
   </div>
 </div>
