@@ -129,8 +129,8 @@
                             <h1>Saya adalah Desain Grafis dan <span class="bord">Web Developer</span> yang Berbasis di Tasikmalaya.</h1>
 
                            <p class="text">
-                                Saya telah mengerjakan berbagai proyek desain dan pengembangan website, 
-                                bekerja sama dengan brand, UMKM, hingga startup untuk menciptakan produk digital 
+                                Saya telah mengerjakan berbagai proyek desain dan pengembangan website,
+                                bekerja sama dengan brand, UMKM, hingga startup untuk menciptakan produk digital
                                 yang modern, fungsional, dan berorientasi pada pengalaman pengguna.
                             </p>
                             <div class="stauts mt-50 pt-50 bord-thin-top">
@@ -150,7 +150,7 @@
                                     <div class="ml-auto">
                                         <div class="butn-presv">
                                             <a href="contact.html" class="butn butn-md butn-bord radius-5 skew">
-                                                <span>Download CV</span>
+                                                <span>Download CV Saya</span>
                                             </a>
                                         </div>
                                     </div>
