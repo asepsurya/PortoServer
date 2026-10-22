@@ -38,7 +38,7 @@
         <!-- Form untuk hapus massal -->
         <form action="/project/delete-multiple" method="POST" id="delete-multiple-form">
             @csrf
-          
+
             @forelse($projects as $project)
 
             <!-- Item -->
@@ -74,7 +74,7 @@
 
                 <!-- RIGHT -->
                 <div class="text-end d-flex flex-column align-items-end justify-content-between">
-                    <div class="fw-semibold">{{ auth()->user()->name }}</div>
+                    <div class="fw-semibold">{{ auth()->check() ? auth()->user()->name : 'Admin' }}</div>
                     <div class="d-flex justify-content-center align-items-center gap-3">
                         <div class="hover-actions d-flex gap-2 mt-1">
                             <a href="/project/{{ $project->slug }}" class="text-primary">
@@ -82,28 +82,15 @@
                             </a>
                             @if($project->status == 0)
                             <!-- Tombol Publikasikan hanya icon -->
-                              <a href="/project/{{ $project->id }}/publish" type="submit" " data-bs-toggle="tooltip" data-bs-placement="top" title="Publikasikan Project">
+                              <a href="/project/{{ $project->id }}/publish" data-bs-toggle="tooltip" data-bs-placement="top" title="Publikasikan Project">
                                     <i class="icon-base ti tabler-send icon-22px"></i>
                                 </a>
                             @else
                             <!-- Tombol Ubah Draft hanya icon -->
-                            
-                                <a href="/project/{{ $project->id }}/draft" type="submit" " data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah ke Draft">
+                                <a href="/project/{{ $project->id }}/draft" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah ke Draft">
                                     <i class="ti icon-base tabler-alert-circle icon-22px"></i>
                                 </a>
-                            
                              @endif
-                        <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-                            tooltipTriggerList.map(function (tooltipTriggerEl) {
-                                return new bootstrap.Tooltip(tooltipTriggerEl)
-                            });
-                        });
-                        </script>
-
-
-
                         </div>
                         <img src="{{ asset('img/user.jpg') }}" class="author-photo rounded-circle mb-2" width="50">
                     </div>
@@ -131,7 +118,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <button type="button" class="dropdown-item d-flex align-items-center gap-2" onclick="copyShareLink()">
+                                    <button type="button" class="dropdown-item d-flex align-items-center gap-2" data-share-url="{{ url('/portofolio/detail/'.$project->slug) }}" onclick="copyShareLink(this)">
                                         <i class="ti icon-base tabler-copy"></i> Copy Link
                                     </button>
                                 </li>
@@ -163,7 +150,7 @@
             @endforelse
 
             <div class="d-flex justify-content-between align-items-center mt-3">
-                
+
                 <div>
                     {{ $projects->links() }}
                 </div>
@@ -171,21 +158,27 @@
         </form>
     </div>
 
-    <!-- Optional JS: Select All -->
-    <script>
-        // Contoh menambahkan "Select All"
-        const checkboxes = document.querySelectorAll('.select-project');
-
-    </script>
-
-
 </div>
 <script>
-    function copyShareLink() {
-        navigator.clipboard.writeText("{{ url('/portofolio/detail/'.$project->slug) }}");
-        alert("Link copied!");
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
 
+    function copyShareLink(button) {
+        const shareUrl = button.dataset.shareUrl;
+        if (!shareUrl) return;
+
+        navigator.clipboard.writeText(shareUrl)
+            .then(function () {
+                alert('Link copied!');
+            })
+            .catch(function () {
+                alert('Gagal menyalin link.');
+            });
+    }
 </script>
 
 @endsection

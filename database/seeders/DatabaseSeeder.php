@@ -18,6 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::firstOrCreate(
+            ['email' => 'asepsurya1998@gmail.com'],
+            [
+                'name' => 'Asep Surya',
+                'password' => bcrypt('newinopak'),
+                'email_verified_at' => now(),
+            ]
+        );
+
         // User::factory(10)->create();
         // Buat 5 kategori
         Category::factory(5)->create();
@@ -30,6 +39,5 @@ class DatabaseSeeder extends Seeder
             // Attach 2-4 skill random
             $project->skills()->attach($skills->random(rand(2,4))->pluck('id'));
         });
-        
     }
 }
